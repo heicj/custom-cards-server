@@ -21,6 +21,12 @@ app.use((req, res, next) => {
     next();
 });
 
+app.get('/quote', (req, res) => {
+    superagent.get ('http://quotes.stormconsultancy.co.uk/quotes/1.json')
+        .then(data => res.send(data.quote));
+
+});
+
 // /books/search?search=tree
 app.get('/search', (req, res) => {
 // https://www.googleapis.com/books/v1/volumes?q=intitle:monkeys&key=SECRETKEY
